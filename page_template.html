@@ -23,11 +23,51 @@
   --accent-soft: #f6ece2;
   --live:     #16794f;
   --live-soft:#e6f3ed;
+  --rule-hover: #d3cec6;
   --shadow:   0 1px 2px rgba(21,24,29,.06), 0 8px 24px rgba(21,24,29,.05);
   --shadow-lift: 0 2px 4px rgba(21,24,29,.07), 0 14px 34px rgba(21,24,29,.09);
   --f-display: "Noto Serif TC", "Songti TC", serif;
   --f-body: "Noto Sans TC", -apple-system, "Segoe UI", sans-serif;
   --f-mono: "IBM Plex Mono", Consolas, monospace;
+}
+/* 深色色票跟處置股站同一套，兩邊切換過去才是同一個網站 */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --ground:   #131518;
+    --panel:    #1c1f24;
+    --panel-2:  #22262c;
+    --ink:      #eceef0;
+    --ink-2:    #9aa4b1;
+    --ink-3:    #737d8a;
+    --rule:     #2a2e35;
+    --rule-2:   #24282e;
+    --accent:   #d98b47;
+    --accent-soft: #2e241b;
+    --live:     #3fae7a;
+    --live-soft:#1b2b24;
+    --rule-hover: #3a4048;
+    --shadow:   0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.28);
+    --shadow-lift: 0 2px 4px rgba(0,0,0,.45), 0 14px 34px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground:   #131518;
+    --panel:    #1c1f24;
+    --panel-2:  #22262c;
+    --ink:      #eceef0;
+    --ink-2:    #9aa4b1;
+    --ink-3:    #737d8a;
+    --rule:     #2a2e35;
+    --rule-2:   #24282e;
+    --accent:   #d98b47;
+    --accent-soft: #2e241b;
+    --live:     #3fae7a;
+    --live-soft:#1b2b24;
+    --rule-hover: #3a4048;
+    --shadow:   0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.28);
+    --shadow-lift: 0 2px 4px rgba(0,0,0,.45), 0 14px 34px rgba(0,0,0,.35);
 }
 * { box-sizing: border-box; }
 body {
@@ -72,7 +112,7 @@ main { padding: 34px 0 80px; }
   transition: box-shadow .16s ease, border-color .16s ease, transform .16s ease;
 }
 a.site:hover {
-  border-color: #d3cec6; box-shadow: var(--shadow-lift); transform: translateY(-2px);
+  border-color: var(--rule-hover); box-shadow: var(--shadow-lift); transform: translateY(-2px);
 }
 a.site:hover h3 { color: var(--accent); }
 a.site:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
