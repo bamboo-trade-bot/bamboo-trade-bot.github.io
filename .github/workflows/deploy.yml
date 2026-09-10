@@ -1,0 +1,48 @@
+name: 發佈首頁
+
+# 首頁是純靜態的，沒有要抓的資料，所以不排程；
+# 改完 sites.json 推上來就會重新發佈。
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # build_page.py 只用標準函式庫，不需要安裝任何套件
+      - name: 產生頁面
+        run: python build_page.py
+
+      - name: 檢查產出
+        run: test -s _site/index.html || { echo "index.html 是空的"; exit 1; }
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

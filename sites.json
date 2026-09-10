@@ -1,0 +1,48 @@
+{
+  "title": "台股策略研究",
+  "tagline": "自建的資料抓取與策略分析站台，資料每日／每週自動更新。",
+  "base": "https://bamboo-trade-bot.github.io",
+  "github": "https://github.com/bamboo-trade-bot",
+  "sections": [
+    {
+      "name": "籌碼面",
+      "note": "誰在買、誰在賣",
+      "sites": [
+        {
+          "name": "集保族群大戶籌碼",
+          "path": "/tdcc-chips/",
+          "repo": "tdcc-chips",
+          "status": "live",
+          "desc": "集保股權分散表週資料，依自訂族群彙總大戶（400 張以上）持股比例的週變化，找出族群層級的籌碼流向。",
+          "points": [
+            "族群自訂分類",
+            "大戶／散戶增減對照",
+            "個股歷史週線"
+          ],
+          "cadence": "每週日更新"
+        }
+      ]
+    },
+    {
+      "name": "市場監控",
+      "note": "盤面上該避開或該注意的名單",
+      "sites": [
+        {
+          "name": "台股處置股監控",
+          "path": "/taiwan-disposal/",
+          "repo": "taiwan-disposal",
+          "status": "live",
+          "desc": "彙整證交所與櫃買中心的處置／注意股公告，列出處置期間、分盤方式與歷史被處置次數統計。",
+          "points": [
+            "當日生效名單",
+            "12 個月次數統計",
+            "原始 JSON 可取用"
+          ],
+          "cadence": "每交易日 09:30、18:30 更新",
+          "probe": "/taiwan-disposal/disposal_data.json",
+          "probe_field": "generated_at"
+        }
+      ]
+    }
+  ]
+}
