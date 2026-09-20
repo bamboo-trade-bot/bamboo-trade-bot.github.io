@@ -43,6 +43,25 @@
           "probe_field": "generated_at"
         }
       ]
+    },
+    {
+      "name": "衍生性商品",
+      "note": "同一個看法，挑哪一檔來做",
+      "sites": [
+        {
+          "name": "權證隱波篩選器",
+          "path": "/taiwan-warrant-analytics/",
+          "repo": "taiwan-warrant-analytics",
+          "status": "live",
+          "desc": "從交易所公開資料自行反解隱含波動率與 Greeks，把同標的、同方向、同天期的權證擺在一起比，找出隱波明顯偏離同群中位數的那幾檔。",
+          "points": [
+            "跨發行商同一套基準",
+            "Delta／實質槓桿／溢價比",
+            "已排除牛熊證與上下限型"
+          ],
+          "cadence": "手動更新"
+        }
+      ]
     }
   ]
 }
